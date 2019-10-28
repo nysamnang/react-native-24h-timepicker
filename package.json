@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "React Native 24 hours format TimePicker for iOS",
   "main": "index.js",
+  "typings": "index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,12 +13,10 @@
   },
   "keywords": [
     "react-native",
-    "24h",
     "24 hour format",
     "twenty four hour format",
-    "timepicker",
-    "time picker",
-    "ios"
+    "time picker ios",
+    "number picker ios"
   ],
   "author": "NY Samnang",
   "license": "MIT",
@@ -26,7 +25,9 @@
   },
   "homepage": "https://github.com/NYSamnang/react-native-24h-timepicker#readme",
   "dependencies": {
-    "prop-types": "^15.6.2",
     "react-native-raw-bottom-sheet": "^1.0.0"
+  },
+  "devDependencies": {
+    "prop-types": "^15.7.2"
   }
 }
