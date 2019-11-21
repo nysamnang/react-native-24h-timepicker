@@ -99,7 +99,9 @@ export default Example;
 
 | Prop           | Type     | Description                                    | Default |
 | -------------- | -------- | ---------------------------------------------- | ------- |
+| minHour        | number   | Minimum of hour                                | 0       |
 | maxHour        | number   | Maximum of hour                                | 23      |
+| minMinute      | number   | Minimum of minute                              | 0       |
 | maxMinute      | number   | Maximum of minute                              | 59      |
 | hourInterval   | number   | The interval at which hours can be selected.   | 1       |
 | minuteInterval | number   | The interval at which minutes can be selected. | 1       |
