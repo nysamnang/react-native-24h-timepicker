@@ -3,7 +3,9 @@ import { StyleProp, ViewStyle } from "react-native";
 
 declare module "react-native-24h-timepicker" {
   export type TimePickerProps = {
+    minHour?: number;
     maxHour?: number;
+    minMinute?: number;
     maxMinute?: number;
     hourInterval?: number;
     minuteInterval?: number;

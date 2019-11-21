@@ -23,33 +23,26 @@ class TimePicker extends Component {
 
   getHourItems = () => {
     const items = [];
-    const { maxHour, hourInterval, hourUnit } = this.props;
-    const interval = maxHour / hourInterval;
-    for (let i = 0; i <= interval; i++) {
-      const value = `${i * hourInterval}`;
+    const { minHour, maxHour, hourInterval, hourUnit } = this.props;
+    for (let i = minHour; i <= maxHour; i=i+hourInterval){
+      const value = `${i}`;
       const item = (
         <Picker.Item key={value} value={value} label={value + hourUnit} />
       );
-      items.push(item);
+      items.push(item); 
     }
     return items;
   };
 
   getMinuteItems = () => {
     const items = [];
-    const { maxMinute, minuteInterval, minuteUnit } = this.props;
-    const interval = maxMinute / minuteInterval;
-    for (let i = 0; i <= interval; i++) {
-      const value = i * minuteInterval;
-      const new_value = value < 10 ? `0${value}` : `${value}`;
+    const { minMinute, maxMinute, minuteInterval, minuteUnit } = this.props;
+    for (let i = minMinute; i <= maxMinute; i=i+minuteInterval){
+      const value = value < 10 ? `0${i}` : `${i}`;
       const item = (
-        <Picker.Item
-          key={value}
-          value={new_value}
-          label={new_value + minuteUnit}
-        />
+        <Picker.Item key={value} value={value} label={value + minuteUnit} />
       );
-      items.push(item);
+      items.push(item); 
     }
     return items;
   };
@@ -140,7 +133,9 @@ class TimePicker extends Component {
 }
 
 TimePicker.propTypes = {
+  minHour: PropTypes.number,
   maxHour: PropTypes.number,
+  minMinute: PropTypes.number,
   maxMinute: PropTypes.number,
   hourInterval: PropTypes.number,
   minuteInterval: PropTypes.number,
@@ -156,7 +151,9 @@ TimePicker.propTypes = {
 };
 
 TimePicker.defaultProps = {
+  minHour: 0,
   maxHour: 23,
+  minMinute: 0,
   maxMinute: 59,
   hourInterval: 1,
   minuteInterval: 1,
