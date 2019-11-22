@@ -11,11 +11,11 @@ declare module "react-native-24h-timepicker" {
     minuteUnit?: string;
     selectedHour?: string;
     selectedMinute?: string;
-    itemStyle: object;
+    itemStyle?: object;
     textCancel?: string;
     textConfirm?: string;
-    onCancel?: () => void;
-    onConfirm?: () => void;
+    onCancel?: (selectedHour?: string, selectedMinute?: string) => void;
+    onConfirm?: (selectedHour?: string, selectedMinute?: string) => void;
   };
 
   class TimePicker extends Component<TimePickerProps> {
