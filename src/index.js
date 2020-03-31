@@ -23,9 +23,10 @@ class TimePicker extends Component {
 
   getHourItems = () => {
     const items = [];
-    const { maxHour, hourInterval, hourUnit } = this.props;
+    const { minHour, maxHour, hourInterval, hourUnit } = this.props;
     const interval = maxHour / hourInterval;
-    for (let i = 0; i <= interval; i++) {
+
+    for (let i = minHour; i <= interval; i++) {
       const value = `${i * hourInterval}`;
       const item = (
         <Picker.Item key={value} value={value} label={value + hourUnit} />
@@ -37,7 +38,7 @@ class TimePicker extends Component {
 
   getMinuteItems = () => {
     const items = [];
-    const { maxMinute, minuteInterval, minuteUnit } = this.props;
+    const {maxMinute, minuteInterval, minuteUnit } = this.props;
     const interval = maxMinute / minuteInterval;
     for (let i = 0; i <= interval; i++) {
       const value = i * minuteInterval;
@@ -77,6 +78,9 @@ class TimePicker extends Component {
   };
 
   open = () => {
+
+    TimePicker.defaultProps.selectedHour = this.props.minHour.toString(10);
+    this.props.selectedHour = this.props.minHour.toString(10);
     this.RBSheet.open();
   };
 
@@ -141,6 +145,7 @@ class TimePicker extends Component {
 
 TimePicker.propTypes = {
   maxHour: PropTypes.number,
+  minHour: PropTypes.number,
   maxMinute: PropTypes.number,
   hourInterval: PropTypes.number,
   minuteInterval: PropTypes.number,
@@ -157,6 +162,7 @@ TimePicker.propTypes = {
 
 TimePicker.defaultProps = {
   maxHour: 23,
+  minHour: 0,
   maxMinute: 59,
   hourInterval: 1,
   minuteInterval: 1,

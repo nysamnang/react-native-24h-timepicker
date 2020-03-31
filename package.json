@@ -1,16 +1,46 @@
 {
-  "name": "react-native-24h-timepicker",
-  "version": "1.1.0",
+  "_args": [
+    [
+      "react-native-24h-timepicker@1.1.0",
+      "/Users/thomasstansel/Documents/GitHub/monitoring-mobile-app"
+    ]
+  ],
+  "_from": "react-native-24h-timepicker@1.1.0",
+  "_id": "react-native-24h-timepicker@1.1.0",
+  "_inBundle": false,
+  "_integrity": "sha512-rnOHWmKcSbbdpYBVl2MxkQY7IU83f/5K6NB8iq4nmWdq8WfHklnkfvfpjnga8uY6sqLDAK11j+dQHo0XVK+QIg==",
+  "_location": "/react-native-24h-timepicker",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "react-native-24h-timepicker@1.1.0",
+    "name": "react-native-24h-timepicker",
+    "escapedName": "react-native-24h-timepicker",
+    "rawSpec": "1.1.0",
+    "saveSpec": null,
+    "fetchSpec": "1.1.0"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/react-native-24h-timepicker/-/react-native-24h-timepicker-1.1.0.tgz",
+  "_spec": "1.1.0",
+  "_where": "/Users/thomasstansel/Documents/GitHub/monitoring-mobile-app",
+  "author": {
+    "name": "NY Samnang"
+  },
+  "bugs": {
+    "url": "https://github.com/NYSamnang/react-native-24h-timepicker/issues"
+  },
+  "dependencies": {
+    "react-native-raw-bottom-sheet": "^1.0.0"
+  },
   "description": "React Native 24 hours format TimePicker for iOS",
-  "main": "index.js",
-  "typings": "index.d.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "devDependencies": {
+    "prop-types": "^15.7.2"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/NYSamnang/react-native-24h-timepicker.git"
-  },
+  "homepage": "https://github.com/NYSamnang/react-native-24h-timepicker#readme",
   "keywords": [
     "react-native",
     "24 hour format",
@@ -18,16 +48,16 @@
     "time picker ios",
     "number picker ios"
   ],
-  "author": "NY Samnang",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/NYSamnang/react-native-24h-timepicker/issues"
+  "main": "index.js",
+  "name": "react-native-24h-timepicker",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NYSamnang/react-native-24h-timepicker.git"
   },
-  "homepage": "https://github.com/NYSamnang/react-native-24h-timepicker#readme",
-  "dependencies": {
-    "react-native-raw-bottom-sheet": "^1.0.0"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {
-    "prop-types": "^15.7.2"
-  }
+  "typings": "index.d.ts",
+  "version": "1.1.0"
 }
