@@ -10,13 +10,13 @@
 ## Installation
 
 ```
-npm i react-native-24h-timepicker --save
+npm i react-native-super-timepicker --save
 ```
 
 ### or
 
 ```
-yarn add react-native-24h-timepicker
+yarn add react-native-super-timepicker
 ```
 
 ## Example
@@ -24,7 +24,7 @@ yarn add react-native-24h-timepicker
 ```jsx
 import React, { Component } from "react";
 import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
-import TimePicker from "react-native-24h-timepicker";
+import TimePicker from "react-native-super-timepicker";
 
 class Example extends Component {
   constructor() {
@@ -126,8 +126,8 @@ Always set `ref` to `TimePicker` and call each method by using `this.TimePicker.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/NYSamnang/react-native-24h-timepicker/blob/master/LICENSE) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/auderephilip/react-native-super-timepicker/blob/master/LICENSE) file for details
 
 ## Author
 
-Made with ❤️ by [NY Samnang](https://github.com/NYSamnang).
+Made by [Philip Su](https://github.com/auderephilip).
