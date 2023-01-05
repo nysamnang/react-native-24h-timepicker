@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { View, TouchableOpacity, Text, Picker } from "react-native";
+import { View, TouchableOpacity, Text } from "react-native";
+import { Picker } from "@react-native-picker/picker";
 import RBSheet from "react-native-raw-bottom-sheet";
 import styles from "./styles";
 
