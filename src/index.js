@@ -7,17 +7,18 @@ import styles from "./styles";
 class TimePicker extends Component {
   constructor(props) {
     super(props);
-    const { selectedHour, selectedMinute } = props;
-    this.state = { selectedHour, selectedMinute };
+    const { selectedHour, selectedMinute, selectedSecond } = props;
+    this.state = { selectedHour, selectedMinute, selectedSecond };
   }
 
   componentWillReceiveProps(nextProps) {
-    const { selectedHour, selectedMinute } = nextProps;
+    const { selectedHour, selectedMinute, selectedSecond } = nextProps;
     if (
       selectedHour !== this.state.selectedHour ||
-      selectedMinute !== this.state.selectedMinute
+      selectedMinute !== this.state.selectedMinute || 
+      selectedSecond !== this.state.selectedSecond
     ) {
-      this.setState({ selectedHour, selectedMinute });
+      this.setState({ selectedHour, selectedMinute, selectedSecond });
     }
   }
 
@@ -26,9 +27,14 @@ class TimePicker extends Component {
     const { maxHour, hourInterval, hourUnit } = this.props;
     const interval = maxHour / hourInterval;
     for (let i = 0; i <= interval; i++) {
-      const value = `${i * hourInterval}`;
+      const value = i * hourInterval;
+      const new_value = value < 10 ? `0${value}` : `${value}`;
       const item = (
-        <Picker.Item key={value} value={value} label={value + hourUnit} />
+        <Picker.Item
+          key={value}
+          value={new_value}
+          label={new_value + hourUnit}
+        />
       );
       items.push(item);
     }
@@ -54,21 +60,40 @@ class TimePicker extends Component {
     return items;
   };
 
-  onValueChange = (selectedHour, selectedMinute) => {
-    this.setState({ selectedHour, selectedMinute });
+  getSecondItems = () => {
+    const items = [];
+    const { maxSecond, secondInterval, secondUnit } = this.props;
+    const interval = maxSecond / secondInterval;
+    for (let i = 0; i <= interval; i++) {
+      const value = i * secondInterval;
+      const new_value = value < 10 ? `0${value}` : `${value}`;
+      const item = (
+        <Picker.Item
+          key={value}
+          value={new_value}
+          label={new_value + secondUnit}
+        />
+      );
+      items.push(item);
+    }
+    return items;
+  };
+
+  onValueChange = (selectedHour, selectedMinute, selectedSecond) => {
+    this.setState({ selectedHour, selectedMinute, selectedSecond });
   };
 
   onCancel = () => {
     if (typeof this.props.onCancel === "function") {
-      const { selectedHour, selectedMinute } = this.state;
-      this.props.onCancel(selectedHour, selectedMinute);
+      const { selectedHour, selectedMinute, selectedSecond } = this.state;
+      this.props.onCancel(selectedHour, selectedMinute, selectedSecond);
     }
   };
 
   onConfirm = () => {
     if (typeof this.props.onConfirm === "function") {
-      const { selectedHour, selectedMinute } = this.state;
-      this.props.onConfirm(selectedHour, selectedMinute);
+      const { selectedHour, selectedMinute, selectedSecond } = this.state;
+      this.props.onConfirm(selectedHour, selectedMinute, selectedSecond);
     }
   };
 
@@ -97,7 +122,7 @@ class TimePicker extends Component {
   };
 
   renderBody = () => {
-    const { selectedHour, selectedMinute } = this.state;
+    const { selectedHour, selectedMinute, selectedSecond } = this.state;
     return (
       <View style={styles.body}>
         <Picker
@@ -105,21 +130,36 @@ class TimePicker extends Component {
           style={styles.picker}
           itemStyle={this.props.itemStyle}
           onValueChange={itemValue =>
-            this.onValueChange(itemValue, selectedMinute)
+            this.onValueChange(itemValue, selectedMinute, selectedSecond)
           }
         >
           {this.getHourItems()}
         </Picker>
+
         <Text style={styles.separator}>:</Text>
+
         <Picker
           selectedValue={selectedMinute}
           style={styles.picker}
           itemStyle={this.props.itemStyle}
           onValueChange={itemValue =>
-            this.onValueChange(selectedHour, itemValue)
+            this.onValueChange(selectedHour, itemValue, selectedSecond)
           }
         >
           {this.getMinuteItems()}
+        </Picker>
+
+        <Text style={styles.separator}>:</Text>
+
+        <Picker
+          selectedValue={selectedSecond}
+          style={styles.picker}
+          itemStyle={this.props.itemStyle}
+          onValueChange={itemValue =>
+            this.onValueChange(selectedHour, selectedMinute, itemValue)
+          }
+        >
+          {this.getSecondItems()}
         </Picker>
       </View>
     );
@@ -142,12 +182,16 @@ class TimePicker extends Component {
 TimePicker.propTypes = {
   maxHour: PropTypes.number,
   maxMinute: PropTypes.number,
+  maxSecond: PropTypes.number,
   hourInterval: PropTypes.number,
   minuteInterval: PropTypes.number,
+  secondInterval: PropTypes.number,
   hourUnit: PropTypes.string,
   minuteUnit: PropTypes.string,
+  secondUnit: PropTypes.string,
   selectedHour: PropTypes.string,
   selectedMinute: PropTypes.string,
+  selectedSecond: PropTypes.string,
   itemStyle: PropTypes.object,
   textCancel: PropTypes.string,
   textConfirm: PropTypes.string,
@@ -158,12 +202,16 @@ TimePicker.propTypes = {
 TimePicker.defaultProps = {
   maxHour: 23,
   maxMinute: 59,
+  maxSecond: 59,
   hourInterval: 1,
   minuteInterval: 1,
+  secondInterval: 1,
   hourUnit: "",
   minuteUnit: "",
-  selectedHour: "0",
+  secondUnit: "",
+  selectedHour: "00",
   selectedMinute: "00",
+  selectedSecond: "00",
   itemStyle: {},
   textCancel: "Cancel",
   textConfirm: "Done"
