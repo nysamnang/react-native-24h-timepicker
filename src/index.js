@@ -19,6 +19,8 @@ class TimePicker extends Component {
       selectedSecond !== this.state.selectedSecond
     ) {
       this.setState({ selectedHour, selectedMinute, selectedSecond });
+    } else {
+      this.state;
     }
   }
 
